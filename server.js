@@ -75,6 +75,9 @@ app.get('/', function (req, res) {
   } else {
     res.render('index.html', { pageCountMessage : null});
   }
+
+  console.log('Updating page count: '+count+ ' ip:'+ req.ip + ' date:'+ Date.now());
+
 });
 
 app.get('/pagecount', function (req, res) {
