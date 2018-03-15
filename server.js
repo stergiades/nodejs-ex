@@ -72,7 +72,7 @@ app.get('/', function (req, res) {
       }
       else {
 
-            console.log('AA : count is '+count);
+ //           console.log('AA : count is '+count);
             res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
       }
     });
