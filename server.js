@@ -70,7 +70,11 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      else {
+
+            console.log('AA : count is '+count);
+            res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      }
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
