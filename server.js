@@ -71,9 +71,7 @@ app.get('/', function (req, res) {
         console.log('Error running count. Message:\n'+err);
       }
       else {
-
- //           console.log('AA : count is '+count);
-            res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+        res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
       }
     });
   } else {
