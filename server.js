@@ -58,7 +58,9 @@ var initDb = function(callback) {
 
 app.get('/', function (req, res) {
 
-    console.log('AS -- get \n');
+    var logmsg = 'AS -- get';
+    console.log(logmsg+' \n');
+    res.render('index.html', { consoleLogMessage : logmsg });
 
   // try to initialize the db on every request if it's not already
   // initialized.
@@ -74,6 +76,7 @@ app.get('/', function (req, res) {
         console.log('Error running count. Message:\n'+err);
       }
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
@@ -82,7 +85,10 @@ app.get('/', function (req, res) {
 
 app.get('/pagecount', function (req, res) {
 
-    console.log('AS -- get pagecount \n');
+
+    var logmsg = 'AS -- get  pagecount';
+    console.log(logmsg+' \n');
+    res.render('index.html', { consoleLogMessage : logmsg });
 
   // try to initialize the db on every request if it's not already
   // initialized.
