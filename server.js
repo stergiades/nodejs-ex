@@ -35,6 +35,9 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 var db = null,
     dbDetails = new Object();
 
+var logmsg = 'none';
+var logctr = 0;
+
 var initDb = function(callback) {
   if (mongoURL == null) return;
 
@@ -58,9 +61,8 @@ var initDb = function(callback) {
 
 app.get('/', function (req, res) {
     
-    var logmsg = 'AS -- get /';
+    logmsg = 'AS -- get / '+(++logctr);
     console.log(logmsg+' \n');
-    res.render('index.html', { consoleLogMessage : logmsg });
 
   // try to initialize the db on every request if it's not already
   // initialized.
@@ -75,7 +77,7 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index.html', { consoleLogMessage : logmsg, pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
@@ -84,9 +86,7 @@ app.get('/', function (req, res) {
 
 app.get('/pagecount', function (req, res) {
     
-    var logmsg = 'AS -- get /pagecount';
-    console.log(logmsg+' \n');
-    res.render('index.html', { consoleLogMessage : logmsg });
+    console.log('AS -- get /pagecount \n');
 
   // try to initialize the db on every request if it's not already
   // initialized.
