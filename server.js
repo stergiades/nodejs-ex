@@ -90,6 +90,9 @@ app.get('/pagecount', function (req, res) {
 
   // try to initialize the db on every request if it's not already
   // initialized.
+
+  res.set('Access-Control-Allow-Origin', '*');
+
   if (!db) {
     initDb(function(err){});
   }
